@@ -1,8 +1,8 @@
 # Harmander Sahib Hukamnamas
 
-![Dall-e: harmandir sahib, 8 bit pixel style][logo.png]
+![Dall-e: harmandir sahib, 8 bit pixel style][icon.png]
 
-Archive of Hukamnamas from Sachkhand Siri [Harmander Sahib](https://en.wikipedia.org/wiki/Golden_Temple).
+Archive of Hukamnamas from [Sachkhand Siri Harmander Sahib](https://en.wikipedia.org/wiki/Golden_Temple).
 
 An archive of the daily Hukamnama raw HTML from [SGPC.net]()
 
