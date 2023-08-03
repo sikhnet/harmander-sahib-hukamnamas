@@ -3,32 +3,32 @@ name: save-hukamnama
 on: [push, pull_request]
 
 jobs:
-  build:
+  save-hukamnama:
     runs-on: ubuntu-latest
     permissions:
       contents: write
 
-steps:
-  - name: Checkout code
-    uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-  - name: Get today's Hukamnama
-    run: ./save.sh
+      - name: Get today's Hukamnama
+        run: ./save.sh
 
-  - name: switching from HTTPS to SSH
-    run: git remote set-url origin ${{ secrets.ssh }}
+      - name: switching from HTTPS to SSH
+        run: git remote set-url origin ${{ secrets.ssh }}
 
-  - name: check for changes
-    run: git status
+      - name: check for changes
+        run: git status
 
-  - name: stage changed files
-    run: git add .
+      - name: stage changed files
+        run: git add .
 
-  - name: commit changed files
-    run: git commit -m "Adding Hukamnama for $(date '+%Y-%m-%d')"
+      - name: commit changed files
+        run: git commit -m "Adding Hukamnama for $(date '+%Y-%m-%d')"
 
-  - name: fetch from main
-    run: git fetch origin main
+      - name: fetch from main
+        run: git fetch origin main
 
-  - name: push code to main
-    run: git push origin HEAD:master
+      - name: push code to main
+        run: git push origin HEAD:master

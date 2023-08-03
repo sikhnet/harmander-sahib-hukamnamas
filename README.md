@@ -4,14 +4,16 @@ Archive of Hukamnamas from Sachkhand Siri Harmander Sahib
 
 An archive of the daily Hukamnama raw HTML from [SGPC.net]()
 
-First ran on 2023-08-03 by Guru's grace, run thereafter daily on a [Github actions schedule](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
+First ran on `2023-08-03`` by Guru's grace.
+
+Run on daily basis using a [Github actions schedule](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
 
 ## Tree
 
 ```bash
 .
 └── hukamnamas
-    └── 2023 # raw sgpc hukamnama htmls stored here
+    └── 2023 # raw sgpc hukamnama htmls stored here by year
 
 ```
 
