@@ -51,6 +51,7 @@ hukamnamaDateNoWhitespace=$(echo $hukamnamaDateRaw)
 # now should look like '2023, August 2,'
 
 comparisonDate=$(date '+%Y, %B %-d,')
+# shellcheck disable=SC2053
 if [[ ${hukamnamaDateNoWhitespace} != ${comparisonDate} ]]; then
     >&2 echo "Error: Hukamnama date should be '${comparisonDate}' got '${hukamnamaDateNoWhitespace}'"
     exit 5
