@@ -4,9 +4,9 @@ Archive of Hukamnamas from Sachkhand Siri Harmander Sahib
 
 An archive of the daily Hukamnama raw HTML from [SGPC.net]()
 
-First ran on `2023-08-03`` by Guru's grace.
+First ran on `2023-08-03` by Guru's grace.
 
-Run on daily basis using a [Github actions schedule](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
+Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github actions schedule](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
 
 ## To be used for
 
@@ -28,7 +28,9 @@ Run on daily basis using a [Github actions schedule](https://docs.github.com/en/
 
 - bash
 - curl
-- shellcheck, yamllint using `github/super-linter``
+- awk
+- [htmlq](https://github.com/mgdm/htmlq) included here to do some validation
+- shellcheck, yamllint using `github/super-linter`
 
 ## Running
 

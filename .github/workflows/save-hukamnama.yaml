@@ -1,6 +1,11 @@
 ---
 name: save-hukamnama
-on: [push, pull_request]
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    # Hukamnama is usually given to us at 4:55am IST in the morning
+    # ∴ run this at 23:40 UTC to catch it
+    - cron: "40 23 * * *"
 
 jobs:
   save-hukamnama:
