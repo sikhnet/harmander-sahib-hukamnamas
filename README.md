@@ -34,6 +34,7 @@ Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github acti
 - bash
 - curl
 - awk
+- grep
 - shellcheck, yamllint using `github/super-linter`
 
 ## Running
