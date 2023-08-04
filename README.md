@@ -1,5 +1,8 @@
 # Harmander Sahib Hukamnamas
 
+[![linting](https://github.com/sikhnet/harmander-sahib-hukamnamas/actions/workflows/lint.yaml/badge.svg)](https://github.com/sikhnet/harmander-sahib-hukamnamas/actions/workflows/lint.yaml)
+[![save-hukamnama](https://github.com/sikhnet/harmander-sahib-hukamnamas/actions/workflows/save-hukamnama.yaml/badge.svg)](https://github.com/sikhnet/harmander-sahib-hukamnamas/actions/workflows/save-hukamnama.yaml)
+
 ![Dall-e: harmandir sahib, 8 bit pixel style](icon.png)
 
 Archive of Hukamnamas from [Sachkhand Siri Harmander Sahib](https://en.wikipedia.org/wiki/Golden_Temple)
