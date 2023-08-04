@@ -31,7 +31,6 @@ Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github acti
 - bash
 - curl
 - awk
-- [htmlq](https://github.com/mgdm/htmlq) included here to do some validation
 - shellcheck, yamllint using `github/super-linter`
 
 ## Running

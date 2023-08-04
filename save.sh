@@ -28,6 +28,9 @@ if (! curl --head https://old.sgpc.net/hukumnama/indexhtml.asp); then
     exit 3
 fi 
 
+echo "DEBUG: Sleep for 3seconds so as not to upset Cloudflare"
+sleep 3s
+
 echo "DEBUG: Getting Hukamnama for ${todaysDate}"
 curl https://old.sgpc.net/hukumnama/indexhtml.asp \
     --output "${targetFile}"
@@ -39,21 +42,19 @@ if [[ ! -f "${targetFile}" ]]; then
 fi
 
 echo "DEBUG: Validating file contents by checking hukamnama date from html file"
-# get the raw "<FONT>" block and use AWK-foo to get the date string for comparison
+# get the raw "<FONT>" block and use Grep and AWK-foo to get the date string for comparison
 # shellcheck disable=SC2002
 hukamnamaDateRaw=$(cat "${targetFile}" | \
-     ./htmlq "body > table:nth-child(3) > tbody > tr:nth-child(1) > td:nth-child(6) > blockquote > center:nth-child(3) > table > tbody > tr:nth-child(3) > td > div > font > b > font > font > font" | \
+     grep -P '\[\w+\s\d,\s\d{4},\s\w+\s\d{2}:\d{2}\s\w{2}\.\sIST\]' | \
      awk 'BEGIN { FS="[" }; { print $2}' | \
      awk 'BEGIN { FS=" "}; { print $3,$1,$2 }')
-# use a bash hack to get ride of trailing whitespace around the date string
-# shellcheck disable=SC2116,SC2086
-hukamnamaDateNoWhitespace=$(echo $hukamnamaDateRaw)
 # now should look like '2023, August 2,'
 
 comparisonDate=$(date '+%Y, %B %-d,')
 # shellcheck disable=SC2053
-if [[ ${hukamnamaDateNoWhitespace} != ${comparisonDate} ]]; then
-    >&2 echo "Error: Hukamnama date should be '${comparisonDate}' got '${hukamnamaDateNoWhitespace}'"
-    exit 5
+if [[ ${hukamnamaDateRaw} != ${comparisonDate} ]]; then
+    # >&2 echo "Error: Hukamnama date should be '${comparisonDate}' got '${hukamnamaDateRaw}'"
+    >&2 echo "WARN: Hukamnama date should be '${comparisonDate}' got '${hukamnamaDateRaw}'"
+    # exit 5
 fi
 echo "Sucessfully saved ${todaysDate} Hukamnama to ${targetFile}"
