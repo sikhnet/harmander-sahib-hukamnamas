@@ -36,6 +36,7 @@ Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github acti
 - awk
 - grep
 - shellcheck, yamllint using `github/super-linter`
+- curl [browser impersonation scripts](https://github.com/lwthiker/curl-impersonate/)
 
 ## Running
 

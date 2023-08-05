@@ -31,9 +31,12 @@ fi
 echo "DEBUG: Sleep for 3seconds so as not to upset Cloudflare"
 sleep 3s
 
+# need to use curl impersonation scripts which adds a load of browser+cookie data
+# to convince cloudlfare to let us in
+# TODO pick a random browser from /curl-impersonation-scripts
 echo "DEBUG: Getting Hukamnama for ${todaysDate}"
-curl https://old.sgpc.net/hukumnama/indexhtml.asp \
-    --output "${targetFile}"
+curl-impersonation-scripts/curl_chrome110 https://old.sgpc.net/hukumnama/indexhtml.asp \
+  --output "${targetFile}"
 
 echo "DEBUG: Validate file exists"
 if [[ ! -f "${targetFile}" ]]; then
