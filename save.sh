@@ -27,7 +27,7 @@ if (! curl --head https://old.sgpc.net/hukumnama/indexhtml.asp); then
 fi
 
 echo "DEBUG: Sleep for 3 seconds so as not to upset Cloudflare"
-# sleep 3s
+sleep 3s
 
 # need to use curl impersonation scripts which adds a load of browser+cookie data
 # to convince cloudlfare to let us in, otherwise it applies bot protection
