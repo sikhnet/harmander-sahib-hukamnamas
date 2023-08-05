@@ -23,8 +23,8 @@ Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github acti
 ```bash
 .
 └── hukamnamas
-    └── 2023 # raw SGPC hukamnama htmls stored here by year
-
+    └── raw
+        └── 2023 # raw SGPC hukamnama htmls stored here by year
 ```
 
 ---
@@ -35,13 +35,15 @@ Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github acti
 - curl
 - awk
 - grep
-- shellcheck, yamllint using `github/super-linter`
 - curl [browser impersonation scripts](https://github.com/lwthiker/curl-impersonate/)
+- shellcheck, yamllint using `github/super-linter`
 
 ## Running
 
 ```bash
 ./save.sh
 ```
+
+## Licence
 
 [LICENCE](LICENCE)

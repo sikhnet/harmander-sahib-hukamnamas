@@ -1,34 +1,35 @@
 ---
 name: save-hukamnama
 on:
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    # Hukamnama is usually given to us at 4:55am IST in the morning
-    # ∴ run this at 23:40 UTC to catch it with a bit of a buffer
-    - cron: "40 23 * * *"
+    schedule:
+        # * is a special character in YAML so you have to quote this string
+        # Hukamnama is usually given to us at 4:55am IST in the morning
+        # ∴ run this at 23:40 UTC to catch it with a bit of a buffer
+        - cron: "20,50 23 * * *"
+        - cron: "20,50 01 * * *"
 
 jobs:
-  save-hukamnama:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+    save-hukamnama:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
 
-      - name: Get today's Hukamnama
-        run: ./save.sh
+            - name: Get today's Hukamnama
+              run: ./save.sh
 
-      - name: Committing back to the repo
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config --global user.email "no-reply@github.com"
-          git config --global user.name "GitHub actions scheduled trigger"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          git fetch origin main
-          git status
-          git add .
-          git commit -m "Adds Hukamnama for $(date '+%Y-%m-%d') (GitHub actions)"
-          git push origin HEAD:main
+            - name: Committing back to the repo
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+              run: |
+                  git config --global user.email "no-reply@github.com"
+                  git config --global user.name "GitHub actions scheduled trigger"
+                  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+                  git fetch origin main
+                  git status
+                  git add .
+                  git commit -m "Adds Hukamnama for $(date '+%Y-%m-%d') (GitHub actions)"
+                  git push origin HEAD:main
