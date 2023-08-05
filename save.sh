@@ -34,7 +34,7 @@ sleep 3s
 # need to use curl impersonation scripts which adds a load of browser+cookie data
 # to convince cloudlfare to let us in
 # TODO pick a random browser from /curl-impersonation-scripts
-echo "DEBUG: Getting Hukamnama for ${todaysDate}"
+echo "DEBUG: Getting Hukamnama for ${todaysDate} using curl-impersonation-scripts"
 curl-impersonation-scripts/curl_chrome110 https://old.sgpc.net/hukumnama/indexhtml.asp \
   --output "${targetFile}"
 
