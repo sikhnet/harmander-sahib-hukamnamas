@@ -5,8 +5,7 @@ on:
         # * is a special character in YAML so you have to quote this string
         # Hukamnama is usually given to us at 4:55am IST in the morning
         # ∴ run this at 23:40 UTC to catch it with a bit of a buffer
-        - cron: "50 23 * * *"
-        - cron: "10 00 * * *"
+        - cron: "40 23 * * *"
 
 jobs:
     save-hukamnama:
