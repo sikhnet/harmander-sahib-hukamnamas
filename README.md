@@ -9,7 +9,7 @@ Archive of Hukamnamas from [Sachkhand Siri Harmander Sahib](https://en.wikipedia
 
 An archive of the daily Hukamnama raw HTML from [SGPC.net](http://SGPC.net)
 
-First ran on `2023-08-03` by Guru's grace.
+First ran on `2023-08-03` by Guru's grace
 
 Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github actions schedule](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#schedule)
 
@@ -24,7 +24,7 @@ Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github acti
 .
 └── hukamnamas
     └── raw
-        └── 2023 # raw SGPC hukamnama htmls stored here by year
+        └── 2023 # raw html SGPC hukamnama stored here by year
 ```
 
 ---
@@ -35,7 +35,7 @@ Run on [daily basis](.github/workflows/save-hukamnama.yaml) using a [Github acti
 - curl
 - awk
 - grep
-- curl [browser impersonation scripts](https://github.com/lwthiker/curl-impersonate/)
+- [curl browser impersonation scripts](https://github.com/lwthiker/curl-impersonate/)
 - shellcheck, yamllint using `github/super-linter`
 
 ## Running
