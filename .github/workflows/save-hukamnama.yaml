@@ -4,7 +4,7 @@ on:
   schedule:
     # Hukamnama is usually given to us at ~4:55am IST in the morning
     # ∴ run this at 23:40 UTC to catch it with a bit of a buffer
-    - cron: "40 23 * * *"
+    - cron: "50 23 * * *"
     # backup in case the first one misses it
     - cron: "10 00 * * *"
 
