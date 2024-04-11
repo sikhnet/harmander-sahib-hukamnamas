@@ -21,13 +21,13 @@ mkdir -p "${targetDir}"
 # give 20x repsonses even if page is down
 # this is just a check for network outages
 echo "DEBUG: Validating network connectivity"
-if (! curl --head https://old.sgpc.net/hukumnama/indexhtml.asp); then
+if (! curl --head https://hs.sgpc.net); then
     >&2 echo "Error: Could not reach SGPC website"
     exit 3
 fi
 
-echo "DEBUG: Sleep for 3 seconds so as not to upset Cloudflare"
-sleep 3s
+echo "DEBUG: Sleep for 5 seconds so as not to upset Cloudflare"
+sleep 5s
 
 # need to use curl impersonation scripts which adds a load of browser+cookie data
 # to convince cloudlfare to let us in, otherwise it applies bot protection
@@ -40,7 +40,7 @@ declare -a browserImpersonation=(\
 browser=$(printf "%s\n" "${browserImpersonation[@]}" | shuf -n1)
 
 echo "DEBUG: Getting Hukamnama for ${todaysDate} using ${browser}"
-"curl-impersonation-scripts/${browser}" https://old.sgpc.net/hukumnama/indexhtml.asp \
+"curl-impersonation-scripts/${browser}" https://hs.sgpc.net \
   --output "${tempFile}"
 
 echo "DEBUG: Validate file exists: ${tempFile}"
