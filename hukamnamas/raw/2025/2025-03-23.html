@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SGPC</title>
+
+  <!-- Bootstrap & FontAwesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" type="e7d3760ffe6d5d39e4feaadc-text/javascript"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <style>
+    /* 🌟 General Styles */
+    body {
+      font-family: "Arial", sans-serif;
+      background: #f8f9fa;
+      padding-top: 0px;
+      /* Adjusted to prevent overlap with navbar */
+    }
+
+    /* 🟣 Navbar Styling */
+    .navbar {
+      background: linear-gradient(135deg, rgba(255, 140, 0, 0.8), #000000, #00008b);
+
+      font-size: 18px;
+      font-weight: bold;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1050;
+      padding: 12px 0;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Ensure full width */
+    .navbar .container {
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 🔗 Navbar Links */
+    .navbar a {
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .navbar a:hover,
+    .navbar-nav .nav-link.active {
+      color: #ffcc00;
+    }
+
+    /* Add margin between navbar items */
+    .navbar-nav .nav-item {
+      margin: 0 15px;
+      /* Adjust as needed */
+    }
+
+    /* Ensure links are properly spaced */
+    .navbar-nav .nav-link {
+      padding: 12px 20px;
+      /* Adds even spacing around links */
+    }
+
+
+    /* 🎭 Navbar Toggler */
+    .navbar-toggler {
+      border: none;
+      outline: none;
+    }
+
+    /* 📱 Responsive Adjustments */
+    @media (max-width: 991px) {
+      .navbar-nav {
+        text-align: center;
+      }
+
+      .navbar-nav .nav-link {
+        display: block;
+        padding: 12px;
+      }
+    }
+
+    /* 🏠 Home Icon */
+    .home-icon {
+      font-size: 22px;
+      color: #fff !important;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      padding: 8px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .home-icon:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* 📜 Footer Styling */
+    .footer {
+      background: linear-gradient(135deg, black, #001f3f, rgb(90, 72, 2), #00008b);
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+        /* ✅ Adds spacing between the customDate elements */
+.customDate {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+
+    background: transparent;
+    padding: 5px 0;
+    border-radius: 5px;
+    text-align: center;
+   margin-right: 20px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* 💫 Underline Animation on Hover */
+.customDate::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(135deg, #003092, #ff8c00); /* Khalsa Colors */
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🎯 On Hover - Highlight & Underline */
+.customDate:hover {
+    color: #000435; /* Saffron - Khalsa Color */
+}
+
+.customDate:hover::after {
+    transform: scaleX(1); /* Expands underline */
+}
+  </style>
+
+<script type="e7d3760ffe6d5d39e4feaadc-text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    let navbar = document.getElementById("navbarNavDropdown");
+    let toggler = document.querySelector(".navbar-toggler");
+
+    // Toggle navbar on toggler button click
+    toggler.addEventListener("click", function () {
+      let bsCollapse = new bootstrap.Collapse(navbar, {
+        toggle: true // Ensure it toggles instead of just hiding
+      });
+    });
+
+    // Close navbar when clicking outside (only when open)
+    document.addEventListener("click", function (event) {
+      if (!navbar.contains(event.target) && !toggler.contains(event.target)) {
+        let bsCollapse = new bootstrap.Collapse(navbar, {
+          toggle: false
+        });
+        bsCollapse.hide();
+      }
+    });
+
+    // Close navbar when clicking on any menu item
+    document.querySelectorAll(".nav-link").forEach(item => {
+      item.addEventListener("click", function () {
+        let bsCollapse = new bootstrap.Collapse(navbar, {
+          toggle: false
+        });
+        bsCollapse.hide();
+      });
+    });
+  });
+
+  function redirectToSGPC(event) {
+    event.preventDefault(); // Prevent immediate navigation
+
+    let userConfirmed = confirm("You will be redirected to SGPC.net. Do you want to continue?");
+    
+    if (userConfirmed) {
+      window.location.href = "https://sgpc.net/";
+    }
+  }
+</script>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+    <a class="navbar-brand" href="#" onclick="if (!window.__cfRLUnblockHandlers) return false; redirectToSGPC(event)" data-cf-modified-e7d3760ffe6d5d39e4feaadc-="">
+    <img src="https://office.sgpc.net/admin/img/logo/logo-sgpc.png" style="width: auto;height: 50px"alt="Logo" class="nav-logo">
+</a>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+        <ul class="navbar-nav text-center">
+          <li class="nav-item">
+            <a class="nav-link" href="https://hs.sgpc.net/index.php">ਹੁਕਮਨਾਮਾ ਸਾਹਿਬ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://hs.sgpc.net/hukam2025/hspdf.php">ਹੁਕਮਨਾਮਾ ਸਾਹਿਬ (PDF)</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://hs.sgpc.net/hukam2025/indexMain.php">ਹੁਕਮਨਾਮਾ ARCHIVES</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://hs.sgpc.net/hukam2025/sangrand.php">ਸੰਗਰਾਂਦ ਹੁਕਮਨਾਮਾ</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="e7d3760ffe6d5d39e4feaadc-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9249dbe7e8eac968',t:'MTc0MjY5MDIzNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"9249dbe7e8eac968","version":"2025.1.0","r":1,"token":"7f19a37861c549278e7a6c7be02c8c41","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}' crossorigin="anonymous"></script>
+</body>
+
+</html>
+<!-- Include Calendar Styles -->
+<link rel="stylesheet" type="text/css" href="hukam2025/style.css" />
+<style>
+/* 🎨 Add spacing for better readability */
+.text-center h2 {
+    margin-bottom: 10px; /* Adds space below the titles */
+}
+
+/* ✅ Gradient Text Effect */
+.gradient-text {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    background: linear-gradient(135deg, #003092, #ff8c00); /* Khalsa Colors */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ✅ Adds spacing between the customDate elements */
+.customDate {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+
+    background: transparent;
+    padding: 5px 0;
+    border-radius: 5px;
+    text-align: center;
+   margin-right: 20px;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* 💫 Underline Animation on Hover */
+.customDate::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(135deg, #003092, #ff8c00); /* Khalsa Colors */
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🎯 On Hover - Highlight & Underline */
+.customDate:hover {
+    color: #000435; /* Saffron - Khalsa Color */
+}
+
+.customDate:hover::after {
+    transform: scaleX(1); /* Expands underline */
+}
+
+#details {
+    padding-top: 80px; /* Adjust based on your navbar height */
+}
+
+.container-fluid {
+    position: relative;
+    z-index: 1;
+}
+
+.navbar {
+    position: fixed; /* Ensure navbar is fixed */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Keep navbar on top */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    #details {
+        padding-top: 60px; /* Adjust for smaller navbar height on mobile */
+    }
+}
+
+</style>
+
+<!-- ✅ Improved Styling -->
+
+<!-- Main Container -->
+<div class="container-fluid wow fadeInUp" data-wow-delay="0.1s" id="details">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <!-- ✅ Placeholder for Hukamnama Content -->
+                <div id="calendarResults" class="content-wrapper highlight-box"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ✅ JavaScript to Fetch Hukamnama via AJAX -->
+<script type="e7d3760ffe6d5d39e4feaadc-text/javascript">
+    function fetchHukamnama(dateString) {
+        console.log("Fetching Hukamnama for:", dateString);
+
+        fetch('hukam2025/hssearchhukmanamaTest.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: new URLSearchParams({ selected_date: dateString })
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.hukamnama) {
+                    document.getElementById('calendarResults').innerHTML = `
+                <div class="container mt-4">
+                    <div class="text-center">
+                        <h2 class="hukamnama-title">ਮੁੱਖਵਾਕ</h2>
+                        <h2 class="hukamnama-title">ਸੱਚਖੰਡ ਸ੍ਰੀ ਹਰਿਮੰਦਰ ਸਾਹਿਬ, ਸ੍ਰੀ ਅੰਮ੍ਰਿਤਸਰ</h2>
+                        <p class="fs-5 hukamnama-date"><strong>${data.hukamnama.date}</strong></p>
+                    </div>
+
+                                    <!-- ✅ Hukamnama & Katha Audio Section (Moved to Top) -->
+                <div class="row justify-content-center align-items-center mt-4">
+                    <!-- Hukamnama Audio -->
+                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                        <div class="audio-card text-center w-100">
+                            <label class="audio-label">🎵 Hukamnama Audio</label>
+                            <audio class="audio-player" src="https://hs.sgpc.net/audiohukamnama/${data.hukamnama.audio_url}" controls></audio>
+                        </div>
+                    </div>
+
+                    <!-- Katha Audio -->
+                    <div class="col-12 col-md-6 d-flex justify-content-center">
+                        <div class="audio-card text-center w-100">
+                            <label class="audio-label">🎵 Katha Audio</label>
+                            <audio class="audio-player" src="https://hs.sgpc.net/audiokatha/${data.hukamnama.mukhwakaudio_url}" controls></audio>
+                        </div>
+                    </div>
+                </div>
+
+
+                    <!-- ✅ Hukamnama Content -->
+                    <div class="hukamnama-card">
+                        <h4 class="hukamnama-title">${data.hukamnama.gheading1}</h4>
+                        <h5 class="hukamnama-subtitle">${data.hukamnama.gheading2}</h5>
+                        <p class="hukamnama-text">${data.hukamnama.ghukamnama.replace(/\n/g, '<br>')}</p>
+                        <p class="fs-5 customDate"><strong>${data.hukamnama.gfooter1}</strong></p>
+                        <p class="fs-5 customDate"><strong>${data.hukamnama.gfooter2}</strong></p>
+                    </div>
+
+                    <!-- ✅ Punjabi Explanation -->
+                    <div class="hukamnama-card2">
+                        <h4 class="hukamnama-title">ਪੰਜਾਬੀ ਵਿਆਖਿਆ</h4>
+                        <p class="hukamnama-text">${data.hukamnama.ghukamnamadesc.replace(/\n/g, '<br>')}</p>
+                    </div>
+
+                    <!-- ✅ English Translation -->
+                    <div class="hukamnama-card2">
+                        <h4 class="hukamnama-title">English Translation</h4>
+                        <h5 class="hukamnama-title">${data.hukamnama.eheading1}</h5>
+                        <h6 class="hukamnama-subtitle">${data.hukamnama.eheading2}</h6>
+                        <p class="hukamnama-text">${data.hukamnama.ehukamnamadesc.replace(/\n/g, '<br>')}</p>
+                        <p class="fs-5 customDate"><strong>${data.hukamnama.efooter1}</strong></p>
+                        <p class="fs-5 customDate"><strong>${data.hukamnama.efooter2}</strong></p>
+                    </div>
+
+                    <!-- ✅ PDF Section -->
+                    <div class="pdf-section text-center mt-4">
+                        ${data.pdfFiles.length > 0 ? data.pdfFiles.map(pdf =>
+                        `<a href="hukam2025/pdfdownload.php?id=${pdf.id}" target="_blank" class="pdf-button">
+                                📜 View Hukamnama in PDF Format
+                            </a>`
+                    ).join('') : '<p class="no-pdf-message">No PDF files available today.</p>'}
+                    </div>
+                </div>
+            `;
+
+                    // ✅ Scroll to Hukamnama Section
+                    const detailsSection = document.getElementById('details');
+                    const navbarHeight = document.querySelector('.navbar')?.offsetHeight || 0;
+                    window.scrollTo({
+                        top: detailsSection.offsetTop - navbarHeight - 10,
+                        behavior: 'smooth'
+                    });
+
+                    // ✅ Remove Highlight Box Animation & Background
+                    let highlightBox = document.querySelector('.highlight-box');
+                    if (highlightBox) {
+                        highlightBox.classList.remove('highlight-box');
+                        highlightBox.classList.add('showContents');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching Hukamnama:', error);
+                showAlert("⚠️ Error fetching Hukamnama. Please try again later.");
+            });
+    }
+
+    // ✅ Show Alert at Top with Blinking Effect
+    function showAlert(message) {
+        let alertBox = document.getElementById("topAlert");
+
+        if (!alertBox) {
+            alertBox = document.createElement("div");
+            alertBox.id = "topAlert";
+            alertBox.className = "top-alert";
+            document.body.appendChild(alertBox);
+        }
+
+        alertBox.innerHTML = message;
+        alertBox.style.display = "block";
+        alertBox.style.opacity = "1";
+
+        // Auto-hide alert after 3 seconds
+        setTimeout(() => {
+            alertBox.style.animation = "none"; // Stop blinking
+            alertBox.style.opacity = "0"; // Fade out
+            setTimeout(() => {
+                alertBox.remove(); // Remove after fade-out
+            }, 500); // Wait for fade-out to complete
+        }, 3000);
+    }
+
+
+    // ✅ Remove Alert
+    function removeAlert() {
+        let alertBox = document.getElementById("topAlert");
+        if (alertBox) {
+            alertBox.style.opacity = "0";
+            setTimeout(() => {
+                alertBox.remove();
+            }, 500);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+        fetchHukamnama(today);
+    });
+
+
+</script>
+<footer class="footer text-center">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-text">
+        Under Design & Development by Internet Department | Copyright &copy;
+        <span class="fw-bold">SGPC</span>
+      </p>
+
+      <!-- ✅ Social Media Links -->
+      <div class="social-icons">
+        <a href="https://www.facebook.com/sgpcamritsar.org" target="_blank" class="fab fa-facebook"
+          aria-label="Facebook"></a>
+        <a href="https://www.instagram.com/sgpc_amritsar/" target="_blank" class="fab fa-instagram"
+          aria-label="Instagram"></a>
+        <a href="https://twitter.com/sgpcamritsar" target="_blank" class="fab fa-twitter" aria-label="Twitter"></a>
+        <a href="https://www.youtube.com/c/SGPCAmritsar-official" target="_blank" class="fab fa-youtube"
+          aria-label="YouTube"></a>
+        <a href="https://t.me/sgpc_amritsar" target="_blank" class="fab fa-telegram" aria-label="Telegram"></a>
+        <a href="https://play.google.com/store/apps/dev?id=9069824058833691570" target="_blank"
+          class="fab fa-google-play" aria-label="Google Play"></a>
+        <a href="https://whatsapp.com/channel/0029VaEcc9NKQuJBzhIg7h26" target="_blank" class="fab fa-whatsapp"
+          aria-label="WhatsApp"></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" type="e7d3760ffe6d5d39e4feaadc-text/javascript"></script>
+
+<!-- ✅ Prevent Multiple Audio Playback -->
+<script type="e7d3760ffe6d5d39e4feaadc-text/javascript">
+  document.addEventListener('play', function (e) {
+    var audios = document.getElementsByTagName('audio');
+    for (var i = 0, len = audios.length; i < len; i++) {
+      if (audios[i] !== e.target) {
+        audios[i].pause();
+      }
+    }
+  }, true);
+</script>
+
+<!-- ✅ Footer Styling -->
+<style>
+  .footer {
+    background: linear-gradient(135deg, #003092, #ff8c00);
+    /* Khalsa Colors */
+    color: white;
+    padding: 20px 0;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* 🎭 Social Icons */
+  .social-icons a {
+    color: white;
+    font-size: 32px;
+    /* Larger icons */
+    margin: 0 15px;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    text-decoration: none;
+    /* ✅ Removes underline */
+    display: inline-block;
+    /* ✅ Ensures proper spacing */
+  }
+
+  .social-icons a:hover {
+    color: #ffcc00;
+    /* Yellow Hover */
+    transform: scale(1.3);
+  }
+
+  .footer-text {
+    margin-bottom: 0;
+    font-size: 14px;
+  }
+</style>
+
+</body>
+
+</html>
